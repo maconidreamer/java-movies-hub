@@ -120,12 +120,12 @@ public class MoviesApiTest {
     void postMovie_withCorrectData_createsMovie()
             throws Exception {
 
-        String json = """
-                {
-                  "title": "Inception",
-                  "year": 2010
-                }
-                """;
+        String json = GSON.toJson(
+                new Movie(
+                        "Inception",
+                        2010
+                )
+        );
 
         HttpResponse<String> response =
                 sendPost(
@@ -167,12 +167,12 @@ public class MoviesApiTest {
     void postMovie_withEmptyTitle_returns422()
             throws Exception {
 
-        String json = """
-                {
-                  "title": "",
-                  "year": 2010
-                }
-                """;
+        String json = GSON.toJson(
+                new Movie(
+                        "",
+                        2010
+                )
+        );
 
         HttpResponse<String> response =
                 sendPost(
@@ -245,12 +245,12 @@ public class MoviesApiTest {
     void postMovie_withWrongContentType_returns415()
             throws Exception {
 
-        String json = """
-                {
-                  "title": "Inception",
-                  "year": 2010
-                }
-                """;
+        String json = GSON.toJson(
+                new Movie(
+                        "Inception",
+                        2010
+                )
+        );
 
         HttpResponse<String> response =
                 sendPost(
